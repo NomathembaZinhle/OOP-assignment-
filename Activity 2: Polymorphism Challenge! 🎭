@@ -1,0 +1,33 @@
+# Base class
+class Vehicle:
+    def move(self):
+        pass  # The base class defines a move method that can be overridden by subclasses.
+
+# Car class inherits from Vehicle
+class Car(Vehicle):
+    def move(self):
+        print("Driving 🚗")
+
+# Plane class inherits from Vehicle
+class Plane(Vehicle):
+    def move(self):
+        print("Flying ✈️")
+
+# Bike class inherits from Vehicle
+class Bike(Vehicle):
+    def move(self):
+        print("Riding 🚴")
+
+# Function to demonstrate polymorphism
+def show_vehicle_move(vehicle):
+    vehicle.move()  # Calls the move method of the object passed as argument
+
+# Create objects for each vehicle
+car = Car()
+plane = Plane()
+bike = Bike()
+
+# Demonstrating polymorphism
+show_vehicle_move(car)    # Output: Driving 🚗
+show_vehicle_move(plane)  # Output: Flying ✈️
+show_vehicle_move(bike)   # Output: Riding 🚴
