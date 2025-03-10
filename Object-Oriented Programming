@@ -1,0 +1,64 @@
+# Base class representing a Smartphone
+class Smartphone:
+    def __init__(self, brand, model, battery_life):
+        self.brand = brand          # e.g., Apple, Samsung
+        self.model = model          # e.g., iPhone 13, Galaxy S21
+        self.__battery_life = battery_life  # Encapsulated, cannot be accessed directly outside
+        self.is_on = False          # Phone is initially off
+
+    # Method to turn the phone on
+    def turn_on(self):
+        if not self.is_on:
+            self.is_on = True
+            print(f"{self.brand} {self.model} is now ON.")
+        else:
+            print(f"{self.brand} {self.model} is already ON.")
+
+    # Method to turn the phone off
+    def turn_off(self):
+        if self.is_on:
+            self.is_on = False
+            print(f"{self.brand} {self.model} is now OFF.")
+        else:
+            print(f"{self.brand} {self.model} is already OFF.")
+
+    # Method to check battery life (using encapsulation)
+    def check_battery(self):
+        print(f"Battery life of {self.brand} {self.model}: {self.__battery_life}%")
+
+    # Method to make a call (simple demonstration)
+    def make_call(self, contact):
+        if self.is_on:
+            print(f"Calling {contact}...")
+        else:
+            print(f"{self.brand} {self.model} is OFF. Turn it on first.")
+
+# Inherited class representing a Smartphone with a Camera
+class SmartphoneWithCamera(Smartphone):
+    def __init__(self, brand, model, battery_life, camera_resolution):
+        # Initialize the parent class with the common attributes
+        super().__init__(brand, model, battery_life)
+        self.camera_resolution = camera_resolution  # New attribute specific to this class
+
+    # Overriding the turn_on method to include a camera check
+    def turn_on(self):
+        super().turn_on()  # Call the parent class's turn_on method
+        print(f"Camera with {self.camera_resolution} MP is ready to use.")
+
+    # Method to take a photo
+    def take_photo(self):
+        if self.is_on:
+            print(f"Taking a photo with {self.camera_resolution} MP camera!")
+        else:
+            print("Phone is off. Cannot take a photo.")
+
+# Example Usage
+# Create a smartphone object
+phone1 = Smartphone("Apple", "iPhone 13", 85)
+phone1.turn_on()
+phone1.check_battery()
+phone1.make_call("John Doe")
+phone1.turn_off()
+
+# Create a smartphone with camera object
+phone2 = SmartphoneWithCamera("Samsung", "Galaxy S21",
